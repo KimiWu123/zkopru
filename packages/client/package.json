@@ -33,7 +33,7 @@
     "node-docker-api": "^1.1.22"
   },
   "dependencies": {
-    "@ethersproject/providers": "^5.6.8",
+    "@ethersproject/providers": "5.7.0",
     "@zkopru/account": "file:../account",
     "@zkopru/babyjubjub": "file:../babyjubjub",
     "@zkopru/contracts": "file:../contracts",
@@ -47,7 +47,7 @@
     "buffer": "^6.0.3",
     "constants-browserify": "^1.0.0",
     "crypto-browserify": "^3.12.0",
-    "ethers": "^5.6.9",
+    "ethers": "5.7.0",
     "https-browserify": "^1.0.0",
     "node-fetch": "^2.6.1",
     "os-browserify": "^0.3.0",

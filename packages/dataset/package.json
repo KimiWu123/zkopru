@@ -40,7 +40,7 @@
     "@zkopru/utils-docker": "file:../utils-docker",
     "@zkopru/zk-wizard": "file:../zk-wizard",
     "big-integer": "^1.6.48",
-    "ethers": "5.6.9",
+    "ethers": "5.7.0",
     "fs-extra": "^9.0.0",
     "keccak": "^3.0.1",
     "node-docker-api": "^1.1.22",

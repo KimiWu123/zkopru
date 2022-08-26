@@ -39,9 +39,8 @@
     "big-integer": "^1.6.48",
     "bn.js": "^5.2.0",
     "circomlib": "0.5.1",
-    "ethers": "5.6.9",
+    "ethers": "5.7.0",
     "simple-smt": "^0.0.6",
-    "soltypes": "^2.0.0",
     "uuid": "^8.1.0"
   },
   "publishConfig": {
