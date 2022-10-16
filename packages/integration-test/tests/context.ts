@@ -1,4 +1,3 @@
-import { ethers } from 'hardhat'
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 import { JsonRpcProvider } from '@ethersproject/providers'
 import fs from 'fs'
@@ -213,21 +212,23 @@ export async function initContext(): Promise<Context> {
   const testFixtures = await fixtureProvider.getFixtures()
   const zkopruAddress = testFixtures.zkopru.zkopru.address
   const contract = new L1Contract(
-    ethers.provider,
+    await fixtureProvider.getProvider(),
     testFixtures.zkopru.zkopru.address,
   )
   const erc20 = testFixtures.testERC20
   const erc721 = testFixtures.testERC721
-  const accounts = await getAccounts(ethers.provider, 5)
+  const accounts = await getAccounts(await fixtureProvider.getProvider(), 5)
   const vks = await loadKeys(path.join(__dirname, '../../circuits/keys/vks'))
   const [coordinatorAccount, newCoordinatorAccount] = accounts
   const { coordinator, mockupDB: coordinatorDB } = await getCoordinator(
-    ethers.provider,
+    await fixtureProvider.getProvider(),
     zkopruAddress,
     coordinatorAccount.ethAccount,
   )
-  const { mockupDB: newCoordinatorDB } = await getCoordinator(
-    ethers.provider,
+  const {
+    mockupDB: newCoordinatorDB,
+  } = await getCoordinator(
+    await fixtureProvider.getProvider(),
     zkopruAddress,
     newCoordinatorAccount.ethAccount,
     { port: 8889, maxBid: 30000 },
@@ -236,7 +237,7 @@ export async function initContext(): Promise<Context> {
   const { wallets, dbs } = await getWallets({
     accounts,
     config: {
-      provider: ethers.provider,
+      provider: await fixtureProvider.getProvider(),
       address: zkopruAddress,
       erc20s: [erc20.address],
       erc721s: [erc721.address],
@@ -281,7 +282,7 @@ export async function initContext(): Promise<Context> {
       carl: accounts[4],
       users: accounts.slice(5),
     },
-    provider: ethers.provider,
+    provider: await fixtureProvider.getProvider(),
     zkopruAddress,
     dbs: [...dbs, coordinatorDB, newCoordinatorDB],
     contract,

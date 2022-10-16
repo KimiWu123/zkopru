@@ -286,7 +286,7 @@ describe('testnet', () => {
     })
   })
 
-  describe.skip('7: Zk Transactions round 2', () => {
+  describe('7: Zk Transactions round 2', () => {
     let aliceWithdrawal: ZkTx
     let bobWithdrawal: ZkTx
     let carlWithdrawal: ZkTx
@@ -329,7 +329,7 @@ describe('testnet', () => {
       )
     })
   })
-  describe.skip('8: Instant withdrawal', () => {
+  describe('8: Instant withdrawal', () => {
     describe('alice, bob, and carl has unfinalized withdrawable notes', () => {
       it(
         'alice has 1 unfinalized withdrawable note',
@@ -348,7 +348,7 @@ describe('testnet', () => {
       it('should transfer 1 ETH to Bob', payForEthWithdrawalInAdvance(ctx))
     })
   })
-  describe.skip('9: Mass Tx', () => {
+  describe('9: Mass Tx', () => {
     it('alice deposit ether 33 times', aliceDepositEthers33Times(ctx))
     it(
       'commit mass deposit and wait for the block proposal',
@@ -363,7 +363,7 @@ describe('testnet', () => {
       waitCoordinatorToProcessTheNewBlockFor33Deposits(ctx),
     )
   })
-  describe.skip('10: Zk Transactions round 3', () => {
+  describe('10: Zk Transactions round 3', () => {
     let aliceTransfer: ZkTx
     let bobTransfer: ZkTx
     let carlTransfer: ZkTx
@@ -388,7 +388,7 @@ describe('testnet', () => {
       )
     })
   })
-  describe.skip(`11: bidding test by two coordinators`, () => {
+  describe(`11: bidding test by two coordinators`, () => {
     let bidArguments: {
       round: BigNumber
       targetRound: BigNumber

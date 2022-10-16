@@ -356,12 +356,17 @@ export class AuctionMonitor {
   }
 
   private async updateIsProposable() {
-    const [isProposable, blockNumber] = await Promise.all([
-      this.node.layer1.coordinator.isProposable(
-        await this.account.getAddress(),
-      ),
-      this.node.layer1.provider.getBlockNumber(),
-    ])
+    let isProposable, blockNumber
+    try {
+      ;[isProposable, blockNumber] = await Promise.all([
+        this.node.layer1.coordinator.isProposable(
+          await this.account.getAddress(),
+        ),
+        this.node.layer1.provider.getBlockNumber(),
+      ])
+    } catch (err) {
+      logger.warn(`coordinator/auction-monitor.ts - unexpected error: ${err}`)
+    }
     logger.trace(
       `coordinator/auction-monitor.ts - Updated isProposable at block ${blockNumber}`,
     )
